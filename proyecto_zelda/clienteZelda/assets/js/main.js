@@ -7,6 +7,8 @@ let poderDeAtaque = document.getElementById("ataque")
 let fotografia = document.getElementById("fotografia")
 let fechaCreacion = document.getElementById("fecha")
 
+let inputs = document.querySelectorAll(".form-control")
+
 let btnFormulario = document.getElementById("btnFormulario")
 
 btnFormulario.addEventListener("click",(evento)=>{
@@ -41,7 +43,7 @@ if (nombre.value != ""){
                 text: "You clicked the button!",
                 icon: "success"
               })
-              
+
             })
           } else nombreCampo = "fecha de creacion del personaje"
         } else nombreCampo = "fotografia del personaje"
