@@ -1,10 +1,13 @@
 export async function consumirApi(datosFormulario) {
     //paso 1 - para cual backend voy
-    let url="localHost:8080/personajes"
+    let url="http://localHost:8080/personajes"
 
     //paso 2 - configurar la peticion
     let peticion ={
         method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
         body:datosFormulario
     }
 
