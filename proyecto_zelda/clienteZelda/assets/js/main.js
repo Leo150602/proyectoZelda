@@ -1,64 +1,63 @@
 import {consumirApi} from "./consumoServicio.js"
 
-let nombre = document.getElementById("nombre")
-let cantidadVida = document.getElementById("vida")
-let poderDeDefensa = document.getElementById("defensa")
-let poderDeAtaque = document.getElementById("ataque")
-let fotografia = document.getElementById("fotografia")
-let fechaCreacion = document.getElementById("fecha")
-
-let inputs = document.querySelectorAll(".form-control")
+let campos = document.querySelectorAll(".campos")
 
 let btnFormulario = document.getElementById("btnFormulario")
 
 btnFormulario.addEventListener("click",(evento)=>{
-evento.preventDefault()
+  evento.preventDefault()
 
-  
-
-
-let datosEnviarBack ={
-    "nombre":nombre.value,
-    "cantidadVida":cantidadVida.value,
-    "cantidadAtaque":poderDeAtaque.value,
-    "cantidadDefensa":poderDeDefensa.value,
-    "fotografia":fotografia.value,
-    "fechaCreacion":fechaCreacion.value
-}
-
-let datosListosEnviar = JSON.stringify(datosEnviarBack)
-let nombreCampo
-let v0=true
-if (nombre.value != ""){
-  if (cantidadVida.value != "") {
-    if (poderDeAtaque.value != "") {
-      if (poderDeDefensa.value != "") {
-        if (fotografia.value != "") {
-          if (fechaCreacion.value != "") {
-            v0 = false
-            consumirApi(datosListosEnviar)
-            .then(function (respuesta) {
-              Swal.fire({
-                title: "Good job!",
-                text: "You clicked the button!",
-                icon: "success"
-              })
-
-            })
-          } else nombreCampo = "fecha de creacion del personaje"
-        } else nombreCampo = "fotografia del personaje"
-      } else nombreCampo = "defensa del personaje"
-    }else nombreCampo = "ataque del personaje"
-  }else nombreCampo = "vida del personaje"
-}else nombreCampo = "nombre del personaje"
-  if (v0) {
+  let datosEnviarBack = {}
+  campos.forEach(campo => {
     
+    if (campo.type === "radio") {
+      if (campo.checked) {
+        if (campo.value === "si"){
+          datosEnviarBack[campo.name] = "true"
+        } else {datosEnviarBack[campo.name] = "false"}
+        
+      }
+    } else {
+      datosEnviarBack[campo.name] = campo.value
+    }
+  });
+  
+  let datosListosEnviar = JSON.stringify(datosEnviarBack)
+  console.log(datosListosEnviar)
+
+  let v0 = false
+  let faltantes =[]
+  campos.forEach(campo => {
+
+    if (campo.value != ""){
+      
+    
+
+    }else{
+      v0 = true
+      faltantes.push(campo.placeholder)
+    }
+    
+  });
+
+  if (v0) {
+
+    let texto = (faltantes.length == 1)? "te falta rellenar el campos campo -> "+ faltantes[0] : "te falta rellenar los campos campo -> "+ faltantes.join(", ")
     Swal.fire({
       icon: "error",
       title: "Oops...",
-      text: "te falta rellenar el campo - "+ nombreCampo,
+      text: texto,
       footer: '<a href="#">Why do I have this issue?</a>'
+    }); 
+  }else{
+    Swal.fire({
+      title: "Good job!",
+      text: "You clicked the button!",
+      icon: "success"
     });
+    consumirApi(datosListosEnviar).then(function (respuesta){
+      
+    })
   }
+    
 })
-

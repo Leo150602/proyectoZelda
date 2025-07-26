@@ -13,7 +13,7 @@
     <div class="banner">
         
     </div>
-    <div class="countainer ">
+    <div class="countainer">
         <div class="row">
             <div class="col-12 col-md-5 align-self-center"><img src="assets/img/pruina.png" class="img-fluid"></div>
             <div class="col-12 col-md-6 align-self-center">
@@ -22,19 +22,20 @@
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores quod aperiam iste quibusdam soluta vel hic quae animi, cumque provident tenetur. Laborum veniam laboriosam totam porro incidunt, quisquam at voluptas.</p>
                 <form class="border rounded shadow p-5">
 
-                    <input type="text" class="mb-3 form-control" placeholder="nombre" id="nombre">
-                    <input type="number" class="mb-3 form-control" placeholder="cantidad de vida" id="vida">
-                    <input type="number" class="mb-3 form-control" placeholder="ataque" id="ataque">
-                    <input type="number" class="mb-3 form-control" placeholder="defensa" id="defensa">
-                    <input type="text" class="mb-3 form-control" placeholder="fotografia" id="fotografia">
-                    <input type="date" class="mb-3 form-control" placeholder="fecha de creacion" id="fecha">
-                    <input type="text" class="mb-3 form-control" placeholder="categoria" id="categoria">
+                    <input name="nombre" type="text" class="mb-3 form-control campos" placeholder="nombre" id="nombre">
+                    <input name="cantidadVida" type="number" class="mb-3 form-control campos" placeholder="cantidad de vida" id="vida">
+                    <input name="cantidadAtaque" type="number" class="mb-3 form-control  campos" placeholder="ataque" id="ataque">
+                    <input name="cantidadDefensa" type="number" class="mb-3 form-control campos" placeholder="defensa" id="defensa">
+                    <input name="fotografia" type="text" class="mb-3 form-control campos" placeholder="fotografia" id="fotografia">
+                    <input name="fechaCreacion" type="date" class="mb-3 form-control campos" placeholder="fecha de creacion" id="fecha">
+                    <input name="categoria" type="text" class="mb-3 form-control campos" placeholder="categoria" id="categoria">
                     <label for="">sigue con vida?</label>
-                    <select name="" class="mb-3 form-control" id="sigueVivo">
-                        <option value=""></option>
-                        <option value="si">si</option>
-                        <option value="no">no</option>
-                    </select>
+                    <label>
+                    <input class="campos" type="radio" name="continuaVivo"  value="si" checked> Si
+                    </label>
+                    <label>
+                    <input class="campos" type="radio" name="continuaVivo"  value="no"> No
+                    </label>
                     <button type="button" class="btn btn-outline-dark" id="btnFormulario">registrar</button>
 
                     
