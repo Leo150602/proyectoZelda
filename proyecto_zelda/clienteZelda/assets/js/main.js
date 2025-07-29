@@ -1,10 +1,11 @@
-import {consumirApi} from "./consumoServicio.js"
+import {consumirApi, mirarDatos, buscarYMostrar, buscarTodos} from "./consumoServicio.js"
 
 let campos = document.querySelectorAll(".campos")
 
 let btnFormulario = document.getElementById("btnFormulario")
 
 btnFormulario.addEventListener("click",(evento)=>{
+
   evento.preventDefault()
 
   let datosEnviarBack = {}
@@ -59,5 +60,14 @@ btnFormulario.addEventListener("click",(evento)=>{
       
     })
   }
+
+  buscarTodos().then(personajes =>{
+
+    personajes.forEach(personaje => {
+      console.log(personaje.nombre)
+      console.log(personaje.categoria)
+    })
+  })
     
 })
+
