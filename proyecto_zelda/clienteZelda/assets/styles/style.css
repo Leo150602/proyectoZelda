@@ -1,3 +1,8 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
 .banner{
     background-image: url("../img/fondo.jpg");
     background-position: top center;
@@ -16,6 +21,7 @@
     background-color: rgb(182, 223, 223);
     padding:15px 0px 15px 0px;
     border: 5px solid rgb(121, 173, 210);
+    overflow-x: hidden;
     h3{
 
         width: 100%;
@@ -26,4 +32,89 @@
     input::placeholder{
         color: rgb(143, 145, 147);
     }
+}
+
+.offcanvas-body{
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+    overflow-y: auto;
+
+}
+
+.divPersonaje{
+
+    border: solid 1px white;
+    width: 80%;
+    height: 30px;
+    text-align: center;
+    
+
+}
+
+.divPersonaje:hover{
+
+    
+    transform: scale(1.1);
+    background-color: rgb(121, 173, 210);
+    color: black;
+
+}
+
+.btn{
+
+    margin-left: 40%;
+    margin-right: 40%;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+}
+
+.contenedorInformacion{
+     width: 100%;
+     height: 100%;
+     display: none;
+     align-content: center;
+     background-color: rgba(0, 0, 0, 0.5);
+     position: fixed;
+     z-index: 1406;
+
+}
+
+.informacionPersonaje{
+
+    margin: 0 auto;
+    width: 500px;
+    height: 500px;
+    background-color: rgb(165, 187, 206);
+    border-radius: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.mostrar{
+    width: 100%;
+    height: 20px;
+    text-align: center;
+    margin-top: 2px;
+}
+
+.imagen{
+    width: 180px;
+    height: 180px;
+    border: solid 2px black;
+    text-align: center;
+}
+.btnSalir{
+
+    padding: 10px 15px;
+    border-radius: 10px;
+
 }

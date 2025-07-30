@@ -36,7 +36,7 @@ export async function buscarYMostrar() {
     return personajes
   }
 
-  export async function buscarTodos() {
+export async function buscarTodos() {
     let url= `http://localHost:8080/personajes`
 
     let respuesta = await fetch(url,{

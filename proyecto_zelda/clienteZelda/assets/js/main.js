@@ -24,7 +24,6 @@ btnFormulario.addEventListener("click",(evento)=>{
   });
   
   let datosListosEnviar = JSON.stringify(datosEnviarBack)
-  console.log(datosListosEnviar)
 
   let v0 = false
   let faltantes =[]
@@ -61,13 +60,73 @@ btnFormulario.addEventListener("click",(evento)=>{
     })
   }
 
+  
+ 
+})
+
+let listaP = document.getElementById("listaPersonajes")
+let btnNavbar = document.getElementById("btnNavbar")
+
+btnNavbar.addEventListener("click", ()=>{
+
+  listaP.innerHTML = ""
+
   buscarTodos().then(personajes =>{
 
-    personajes.forEach(personaje => {
-      console.log(personaje.nombre)
-      console.log(personaje.categoria)
+    personajes.forEach(personaje =>{
+
+      let divPersonaje = document.createElement("div")
+      divPersonaje.textContent = personaje.nombre
+      divPersonaje.classList.add("divPersonaje")
+      listaP.appendChild(divPersonaje)
+
     })
+    let seleccionPersonaje = document.querySelectorAll(".divPersonaje")
+
+    seleccionPersonaje.forEach(divPersonaje =>{
+      divPersonaje.addEventListener("click", ()=>{
+  
+        let contenedorInformacion = document.getElementById("contenedorInformacion")
+        let informacionPersonaje = document.getElementById("informacionPersonaje")
+
+        contenedorInformacion.style.display = "block"
+
+        personajes.forEach(personaje =>{
+        
+          if(personaje.nombre == divPersonaje.textContent){
+
+            document.getElementById("fotoPersonaje").textContent = personaje.fotografia
+            document.getElementById("infoNombre").textContent = personaje.nombre
+            document.getElementById("infoVida").textContent = "vida: " + personaje.cantidadVida
+            document.getElementById("infoAtaque").textContent = "ataque: " + personaje.cantidadAtaque
+            document.getElementById("infoDefensa").textContent = "defensa: " + personaje.cantidadDefensa
+            document.getElementById("infoCategoria").textContent = "categoria: " + personaje.categoria
+            if(personaje.continuaVivo){
+              document.getElementById("infoEstado").textContent = "continua con vida"
+
+            }else{
+              document.getElementById("infoEstado").textContent = "se murioooo"
+            }
+
+          }
+
+        })
+
+        document.getElementById("btnSalir").addEventListener("click", ()=>{
+          contenedorInformacion.style.display = "none"
+        })
+  
+      })
+    })
+
+
   })
-    
+   
+  
+
+  
+
 })
+
+
 
